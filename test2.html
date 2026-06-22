@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/styles/hero1.css">
+    <link rel="stylesheet" href="/styles/hero1.css">
 
     <title>Document</title>
 </head>
@@ -23,7 +23,25 @@
       <li class="navbar__item"><a href="#contact" class="navbar__link">Contact</a></li>
     </ul>
 
-    <!-- Mobile Menu Toggle Button (Dummy for now) -->
+    <!-- Theme Toggle Button -->
+    <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode">
+      <svg class="theme-toggle__icon--light" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="theme-toggle__icon--dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
+
+    <!-- Mobile Menu Toggle Button -->
     <button type="button" class="navbar__toggle" aria-label="Toggle navigation menu">
       <span class="navbar__toggle-line"></span>
       <span class="navbar__toggle-line"></span>
@@ -150,51 +168,102 @@
   </div>
 </section>
 <!-- Contact Section End -->
-
-<!-- Footer Begin -->
+<!-- Footer Section Begin -->
 <footer class="footer">
   <div class="footer__container">
-    <!-- Brand column -->
+    
+    <!-- Brand Column -->
     <div class="footer__brand-col">
       <a href="#" class="footer__logo">VERTEX<span class="footer__logo--accent">MOTORS</span></a>
-      <p class="footer__tagline">Curating ultimate driving experiences for generations.</p>
+      <p class="footer__tagline">Curating unparalleled selections of premium, precision-engineered luxury vehicles for discerning drivers worldwide.</p>
+      <p class="footer__info">
+        📍 123 Luxury Avenue, Lagos, Nigeria<br>
+        📞 +234 800 123 4567<br>
+        ✉️ concierge@vertexmotors.com
+      </p>
     </div>
 
-    <!-- Quick Links Column -->
-    <div class="footer__links-col">
-      <h4 class="footer__heading">Showroom</h4>
+    <!-- Companies Column -->
+    <div class="footer__col">
+      <h4 class="footer__heading">Companies</h4>
       <ul class="footer__list">
-        <li><a href="#inventory" class="footer__link">Hypercars</a></li>
-        <li><a href="#inventory" class="footer__link">Supercars</a></li>
-        <li><a href="#inventory" class="footer__link">Luxury Sedans</a></li>
-        <li><a href="#inventory" class="footer__link">Pre-Owned Certified</a></li>
-      </ul>
-    </div>
-
-    <!-- Corporate Column -->
-    <div class="footer__links-col">
-      <h4 class="footer__heading">Company</h4>
-      <ul class="footer__list">
-        <li><a href="#about" class="footer__link">Our Legacy</a></li>
-        <li><a href="#" class="footer__link">Press & Media</a></li>
+        <li><a href="#" class="footer__link">About Us</a></li>
+        <li><a href="#inventory" class="footer__link">Inventory</a></li>
+        <li><a href="#contact" class="footer__link">Contact</a></li>
         <li><a href="#" class="footer__link">Careers</a></li>
-        <li><a href="#contact" class="footer__link">Concierge Desk</a></li>
       </ul>
     </div>
 
-    <!-- Socials/Newsletter Column -->
-    <div class="footer__links-col">
-      <h4 class="footer__heading">Location</h4>
-      <p class="footer__info">742 Performance Blvd,<br>Trackside District, CA</p>
-      <p class="footer__info">Mon - Sat: 9:00 AM - 6:00 PM</p>
+    <!-- Support Column -->
+    <div class="footer__col">
+      <h4 class="footer__heading">Support</h4>
+      <ul class="footer__list">
+        <li><a href="#" class="footer__link">Help Center</a></li>
+        <li><a href="#" class="footer__link">Vehicle Certification</a></li>
+        <li><a href="#" class="footer__link">Privacy Policy</a></li>
+        <li><a href="#" class="footer__link">Terms of Service</a></li>
+      </ul>
     </div>
+
+    <!-- Social Column -->
+    <div class="footer__col">
+      <h4 class="footer__heading">Connect</h4>
+      <ul class="footer__list">
+        <li><a href="#" class="footer__link">Instagram</a></li>
+        <li><a href="#" class="footer__link">Facebook</a></li>
+        <li><a href="#" class="footer__link">Twitter</a></li>
+        <li><a href="#" class="footer__link">LinkedIn</a></li>
+      </ul>
+    </div>
+
   </div>
 
+  <!-- Footer Bottom -->
   <div class="footer__bottom">
-    <p class="footer__copyright">&copy; 2026 Vertex Motors. All Rights Reserved.</p>
+    <p class="footer__copyright">© 2026 VertexMotors. All rights reserved.</p>
+    <p class="footer__copyright">Designed with precision for luxury enthusiasts.</p>
   </div>
 </footer>
-<!-- Footer End -->
+<!-- Footer Section End -->
+
+<script>
+  // Theme Toggle Functionality
+  const themeToggle = document.getElementById('theme-toggle');
+  const lightIcon = themeToggle.querySelector('.theme-toggle__icon--light');
+  const darkIcon = themeToggle.querySelector('.theme-toggle__icon--dark');
+  
+  // Check for saved theme preference or default to dark
+  const currentTheme = localStorage.getItem('theme') || 'dark';
+  document.body.setAttribute('data-theme', currentTheme);
+  
+  // Update icons based on current theme
+  if (currentTheme === 'light') {
+    lightIcon.style.display = 'none';
+    darkIcon.style.display = 'block';
+  } else {
+    lightIcon.style.display = 'block';
+    darkIcon.style.display = 'none';
+  }
+  
+  // Toggle theme on button click
+  themeToggle.addEventListener('click', () => {
+    const currentTheme = document.body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.body.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Update icons
+    if (newTheme === 'light') {
+      lightIcon.style.display = 'none';
+      darkIcon.style.display = 'block';
+    } else {
+      lightIcon.style.display = 'block';
+      darkIcon.style.display = 'none';
+    }
+  });
+</script>
+
 </body>
 
 </html>

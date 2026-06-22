@@ -1,86 +1,188 @@
 /* ==========================================================================
-   CSS Custom Properties (Variables) & Global Defaults
+   1. Dynamic Theme Architecture Tokens
    ========================================================================== */
-/* ==========================================================================
-   CSS Custom Properties (Variables) - Premium Light Mode Edition
-   ========================================================================== */
-:root {
+
+/* --- Default Global Dark Mode Variables --- */
+:root,
+body[data-theme="dark"] {
   /* Core Backgrounds & Surfaces */
-  --color-primary-dark: #ffffff;    /* Clean, crisp white background */
-  --color-surface-light: #f8f9fa;   /* Ultra-light gray for alternate sections (Contact form bg) */
-  --color-navbar-bg: rgba(255, 255, 255, 0.95); /* Semi-transparent light navigation */
-  --color-footer-bg: #111113;       /* Retaining a sleek dark footer for high-end contrast */
+  --color-bg-main: #0a0a0b;         /* Premium deep dark gray/black */
+  --color-bg-surface: #111113;      /* Slightly lighter dark for structural contrast */
+  --color-navbar-bg: rgba(10, 10, 11, 0.9);
+  --color-footer-bg: #0a0a0b;
 
-  /* Branding & Accents */
-  --color-accent: #ff3e3e;          /* Bold automotive racing red */
-  --color-accent-hover: #e02626;    /* Darker hover state */
-  
-  /* Typography & UI Elements */
-  --color-text-light: #0a0a0b;      /* Deep dark gray/black for ultra-readable headings */
-  --color-text-muted: #4a5568;      /* Mid-tone slate gray for secondary descriptions */
-  --color-text-white: #ffffff;      /* Maintained for elements that must stay white (Hero text, footer) */
-  
-  /* Hero Specific Settings (Preserves text readability over background images) */
-  --color-overlay: rgba(10, 10, 11, 0.65); 
-  --color-arrow-bg: rgba(10, 10, 11, 0.1);
-  --color-arrow-hover: rgba(10, 10, 11, 0.25);
+  /* Typography & Framing Colors */
+  --color-text-main: #ffffff;       /* Main header/title color */
+  --color-text-muted: #e2e8f0;      /* Soft description/paragraph color */
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-navbar-border: rgba(255, 255, 255, 0.05);
 
-  /* Typography Configuration */
+  /* Interactive Elements */
+  --color-arrow-bg: rgba(255, 255, 255, 0.1);
+  --color-arrow-hover: rgba(255, 255, 255, 0.25);
+  --color-input-bg: #0a0a0b;
+
+  /* Shared Hardcoded Anchors */
+  --color-accent: #ff3e3e;          /* Racing Red */
+  --color-accent-hover: #e02626;
+  --color-text-white: #ffffff;
   --font-family-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  
-  /* Transitions */
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-/* Reset baseline for standalone evaluation if needed */
+
+/* --- Light Mode Variable Overrides --- */
+body[data-theme="light"] {
+  /* Core Backgrounds & Surfaces */
+  --color-bg-main: #ffffff;         /* Crisp premium white */
+  --color-bg-surface: #f8f9fa;      /* Clean subtle light gray for form panels */
+  --color-navbar-bg: rgba(255, 255, 255, 0.95);
+  --color-footer-bg: #111113;       /* Premium anchor: Footer remains dark for contrast */
+
+  /* Typography & Framing Colors */
+  --color-text-main: #0a0a0b;       /* Deep high-contrast dark text */
+  --color-text-muted: #4a5568;      /* Mid-tone slate gray for copy */
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-navbar-border: rgba(0, 0, 0, 0.05);
+
+  /* Interactive Elements */
+  --color-arrow-bg: rgba(10, 10, 11, 0.1);
+  --color-arrow-hover: rgba(10, 10, 11, 0.25);
+  --color-input-bg: #ffffff;
+}
+
+/* ==========================================================================
+   2. Global Baseline Reset
+   ========================================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-family-sans);
-  background-color: var(--color-primary-dark);
-  color: var(--color-text-light); /* Enforces dark text globally */
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
   overflow-x: hidden;
 }
-/* ==========================================================================
-   Hero Block Elements
-   ========================================================================== */
 
+/* ==========================================================================
+   3. Top Navigation Bar
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: var(--color-navbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-navbar-border);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.navbar__container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--color-text-main);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+}
+
+.navbar__logo--accent {
+  color: var(--color-accent);
+  font-weight: 400;
+}
+
+.navbar__menu {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+.navbar__link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition-smooth);
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--color-text-main);
+}
+
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.navbar__toggle-line {
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text-main);
+  transition: var(--transition-smooth);
+}
+
+/* ==========================================================================
+   4. Hero Section Block
+   ========================================================================== */
 .hero {
   position: relative;
   width: 100%;
   height: 100vh;
+  padding-top: 80px; 
   display: flex;
   justify-content: center;
   align-items: center;
-  /* Premium Unsplash placeholder placeholder representing a clean automotive backdrop */
   background-image: url('https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1920');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-color: var(--color-text-white); /* Keeps hero text white */  padding: 0 1.5rem;
+  color: var(--color-text-white); /* Always absolute white for contrast over backdrops */
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
-/* Background Overlay for Text Accessibility */
 .hero__overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--color-overlay);
+  background: rgba(10, 10, 11, 0.65); /* Always safe dynamic dark tint */
   z-index: 1;
 }
 
-/* Centered Content Container */
 .hero__content {
   position: relative;
   z-index: 2;
   max-width: 800px;
   text-align: center;
-  /* Slight, elegant padding shift downward to give breathing room from viewports top */
   padding-top: 4vh; 
   display: flex;
   flex-direction: column;
@@ -88,7 +190,6 @@ color: var(--color-text-white); /* Keeps hero text white */  padding: 0 1.5rem;
   gap: 1.5rem;
 }
 
-/* Typography Modifiers */
 .hero__title {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
@@ -100,16 +201,16 @@ color: var(--color-text-white); /* Keeps hero text white */  padding: 0 1.5rem;
 .hero__subtitle {
   font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 400;
-color: #e2e8f0; /* Soft light text override strictly for the dark background image */  line-height: 1.6;
+  color: #e2e8f0; /* Soft contrast override optimized for image text overlays */
+  line-height: 1.6;
   max-width: 640px;
-  text-wrap: balance; /* Elegant multi-line distribution on modern browsers */
+  text-wrap: balance;
 }
 
-/* Call To Action Button */
 .hero__cta {
   display: inline-block;
   background-color: var(--color-accent);
-  color: var(--color-text-light);
+  color: var(--color-text-white);
   text-decoration: none;
   font-size: 1rem;
   font-weight: 600;
@@ -133,10 +234,6 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   transform: translateY(0);
 }
 
-/* ==========================================================================
-   Slider Navigation Elements (Dummy Controls)
-   ========================================================================== */
-
 .hero__arrow {
   position: absolute;
   top: 50%;
@@ -145,18 +242,16 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: var(--color-arrow-bg);
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-text-white);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: var(--transition-smooth);
-  backdrop-filter: blur(4px); /* Modern subtle glassy aesthetic */
+  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
-
-
-  color: var(--color-text-white);
-  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .hero__arrow svg {
@@ -164,67 +259,24 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   height: 24px;
   transition: var(--transition-smooth);
 }
-/* h2 {
 
-} */
 .hero__arrow:hover {
-  background-color: var(--color-arrow-hover);
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .hero__arrow:hover svg {
   transform: scale(1.1);
 }
 
-.hero__arrow--left {
-  left: 2rem;
-}
-
-.hero__arrow--right {
-  right: 2rem;
-}
+.hero__arrow--left { left: 2rem; }
+.hero__arrow--right { right: 2rem; }
 
 /* ==========================================================================
-   Responsive Structural Breakpoints
+   5. About Section
    ========================================================================== */
-
-@media (max-width: 768px) {
-  .hero {
-    padding: 0 1rem;
-  }
-
-  /* Reposition arrows gracefully on smaller screens to avoid overlapping content */
-  .hero__arrow {
-    width: 44px;
-    height: 44px;
-    top: auto;
-    bottom: 2.5rem;
-    transform: none;
-  }
-  
-  .hero__arrow--left {
-    left: calc(50% - 60px);
-  }
-  
-  .hero__arrow--right {
-    right: calc(50% - 60px);
-  }
-
-  .hero__content {
-    padding-top: 0;
-    margin-bottom: 5rem; /* Pushes content away from bottom navigation placement on mobile */
-  }
-}
-
-
-/* ==========================================================================
-   About Section Style Rules
-   ========================================================================== */
-
 .about {
   width: 100%;
-  background-color: var(--color-primary-dark);
-  color: var(--color-text-light);
-  padding: 8rem 1.5rem; /* Substantial vertical padding for premium spacing layout */
+  padding: 8rem 1.5rem;
   display: flex;
   justify-content: center;
 }
@@ -237,8 +289,6 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   gap: 5rem;
   align-items: center;
 }
-
-/* --- Left Column: Content Narrative --- */
 
 .about__content {
   display: flex;
@@ -268,14 +318,13 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   color: var(--color-text-muted);
 }
 
-/* Statistics Grid */
 .about__stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--color-border);
 }
 
 .about__stat-item {
@@ -287,7 +336,7 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
 .about__stat-number {
   font-size: 2rem;
   font-weight: 800;
-  color: var(--color-text-light);
+  color: var(--color-text-main);
 }
 
 .about__stat-label {
@@ -296,8 +345,6 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   letter-spacing: 0.05em;
   color: var(--color-text-muted);
 }
-
-/* --- Right Column: Visual Gallery --- */
 
 .about__gallery {
   position: relative;
@@ -311,7 +358,7 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   position: relative;
   overflow: hidden;
   border-radius: 4px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   transition: var(--transition-smooth);
 }
 
@@ -323,7 +370,6 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   transition: var(--transition-smooth);
 }
 
-/* Layout stacking for the two gallery images */
 .about__image-wrapper--primary {
   grid-column: 1 / span 9;
   grid-row: 1 / span 9;
@@ -334,89 +380,29 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   grid-column: 5 / -1;
   grid-row: 5 / -1;
   z-index: 3;
-  border: 8px solid var(--color-primary-dark); /* Visually separates the overlapping elements */
+  border: 8px solid var(--color-bg-main);
+  transition: border-color 0.3s ease;
 }
 
-/* Hover Zoom Effect */
 .about__image-wrapper:hover .about__img {
   transform: scale(1.05);
 }
 
 /* ==========================================================================
-   Responsive Breakpoints
+   6. Contact Form Section
    ========================================================================== */
-
-@media (max-width: 992px) {
-  .about {
-    padding: 5rem 1.5rem;
-  }
-
-  .about__container {
-    grid-template-columns: 1fr; /* Stacks columns vertically on smaller tablets/mobiles */
-    gap: 4rem;
-  }
-  
-  .about__gallery {
-    height: 400px;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 576px) {
-  .about__stats {
-    grid-template-columns: 1fr; /* Stacks stats vertically on mobile screens */
-    gap: 2rem;
-  }
-}
-
-/* ==========================================================================
-   Top Navigation Bar Styles
-   ========================================================================== */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background-color: var(--color-navbar-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Soft light shadow divider */
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-}
-
-.navbar__logo {
-  color: var(--color-text-light); /* Flips logo text black */
-}
-
-.navbar__toggle-line {
-  background-color: var(--color-text-light); /* Flips mobile hamburger icon black */
-}
-/* Adjust your existing Hero container rules to sit neatly beneath fixed menu */
-.hero {
-  padding-top: 80px; 
-}
-
-
-/* ==========================================================================
-   Contact Section Form Styles
-   ========================================================================== */
-
 .contact {
   width: 100%;
-  background-color: #111113; /* Slightly lighter tone variation to break sections */
+  background-color: var(--color-bg-surface);
   padding: 8rem 1.5rem;
   display: flex;
   justify-content: center;
+  transition: background-color 0.3s ease;
 }
 
 .contact__container {
   width: 100%;
-  max-width: 700px; /* Kept narrow for premium readability layout */
+  max-width: 700px;
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
@@ -450,7 +436,6 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   line-height: 1.6;
 }
 
-/* Form Structural Core Elements */
 .contact__form {
   display: flex;
   flex-direction: column;
@@ -479,10 +464,10 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
 
 .contact__input {
   width: 100%;
-  background-color: var(--color-primary-dark);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--color-input-bg);
+  border: 1px solid var(--color-border);
   padding: 1rem 1.25rem;
-  color: var(--color-text-light);
+  color: var(--color-text-main);
   font-family: inherit;
   font-size: 0.95rem;
   border-radius: 4px;
@@ -495,10 +480,9 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   box-shadow: 0 0 0 2px rgba(255, 62, 62, 0.15);
 }
 
-/* Form control resets for custom select dropdown and textarea elements */
 .contact__input--select {
   appearance: none;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='gray' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
   background-repeat: no-repeat;
   background-position: right 1.25rem center;
   background-size: 16px;
@@ -509,10 +493,9 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   resize: vertical;
 }
 
-/* Submit Action Control */
 .contact__submit {
   background-color: var(--color-accent);
-  color: var(--color-text-light);
+  color: var(--color-text-white);
   border: none;
   font-size: 1rem;
   font-weight: 600;
@@ -530,19 +513,17 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   box-shadow: 0 10px 20px rgba(255, 62, 62, 0.2);
 }
 
-
 /* ==========================================================================
-   Footer Section Matrix Styles
+   7. Footer Matrix
    ========================================================================== */
-
 .footer {
   width: 100%;
-  background-color: var(--color-primary-dark);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background-color: var(--color-footer-bg);
   padding: 5rem 1.5rem 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: background-color 0.3s ease;
 }
 
 .footer__container {
@@ -562,11 +543,24 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   max-width: 300px;
 }
 
+.footer__logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--color-text-white);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+}
+
+.footer__logo--accent {
+  color: var(--color-accent);
+  font-weight: 400;
+}
+
 .footer__tagline,
 .footer__info {
   font-size: 0.9rem;
   line-height: 1.6;
-  color: var(--color-text-muted);
+  color: #a0aec0; /* Balanced high contrast text over dark footer variant background */
 }
 
 .footer__heading {
@@ -574,7 +568,7 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1.5rem;
-  color: var(--color-text-light);
+  color: var(--color-text-white);
 }
 
 .footer__list {
@@ -586,14 +580,14 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
 
 .footer__link {
   font-size: 0.9rem;
-  color: var(--color-text-muted);
+  color: #a0aec0;
   text-decoration: none;
   transition: var(--transition-smooth);
 }
 
 .footer__link:hover {
-  color: var(--color-text-light);
-  padding-left: 2px; /* Subtle organic movement shift on link hover */
+  color: var(--color-text-white);
+  padding-left: 2px;
 }
 
 .footer__bottom {
@@ -610,12 +604,22 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   color: rgba(255, 255, 255, 0.4);
 }
 
-
 /* ==========================================================================
-   Responsive Adaptations
+   8. Responsive Media Adaptations
    ========================================================================== */
-
 @media (max-width: 992px) {
+  .about__container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  
+  .about__gallery {
+    height: 400px;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
   .footer__container {
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
@@ -624,11 +628,27 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
 
 @media (max-width: 768px) {
   .navbar__menu {
-    display: none; /* Pre-wired layout setup for modern mobile slider drop actions */
+    display: none; /* Ready for JS slide interactions toggles */
   }
 
   .navbar__toggle {
     display: flex;
+  }
+
+  .hero__arrow {
+    width: 44px;
+    height: 44px;
+    top: auto;
+    bottom: 2.5rem;
+    transform: none;
+  }
+  
+  .hero__arrow--left { left: calc(50% - 60px); }
+  .hero__arrow--right { right: calc(50% - 60px); }
+
+  .hero__content {
+    padding-top: 0;
+    margin-bottom: 5rem;
   }
 
   .contact {
@@ -641,9 +661,178 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   }
 }
 
+@media (max-width: 576px) {
+  .about__stats {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
 @media (max-width: 480px) {
   .footer__container {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+}
+
+
+/* ==========================================================================
+   7. Footer Matrix
+   ========================================================================== */
+.footer {
+  width: 100%;
+  background-color: var(--color-footer-bg);
+  padding: 5rem 1.5rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.footer__container {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  gap: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer__brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 300px;
+}
+
+.footer__logo {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--color-text-white);
+  text-decoration: none;
+  letter-spacing: -0.03em;
+}
+
+.footer__logo--accent {
+  color: var(--color-accent);
+  font-weight: 400;
+}
+
+.footer__tagline,
+.footer__info {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #a0aec0;
+}
+
+.footer__heading {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+  color: var(--color-text-white);
+}
+
+.footer__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer__link {
+  font-size: 0.9rem;
+  color: #a0aec0;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.footer__link:hover {
+  color: var(--color-text-white);
+  padding-left: 2px;
+}
+
+.footer__bottom {
+  width: 100%;
+  max-width: 1200px;
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__copyright {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Responsive Footer */
+@media (max-width: 992px) {
+  .footer__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer__container {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .footer__bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+/* Theme Toggle Button */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: var(--color-arrow-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  margin-right: 1rem;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-arrow-hover);
+  transform: scale(1.05);
+}
+
+.theme-toggle__icon--light,
+.theme-toggle__icon--dark {
+  width: 22px;
+  height: 22px;
+  transition: var(--transition-smooth);
+}
+
+.theme-toggle__icon--light {
+  color: var(--color-text-main);
+}
+
+.theme-toggle__icon--dark {
+  color: var(--color-text-main);
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .theme-toggle {
+    margin-right: 0.5rem;
+    width: 40px;
+    height: 40px;
+  }
+  
+  .theme-toggle__icon--light,
+  .theme-toggle__icon--dark {
+    width: 20px;
+    height: 20px;
   }
 }
