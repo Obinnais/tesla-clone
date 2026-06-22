@@ -1,0 +1,722 @@
+/* Header Styling*/
+/*  */
+header.main_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    position: sticky;
+    top: 0;
+    background-color: #ffff;
+    z-index: 100;
+}
+
+.top_nav a {
+    text-decoration: none;
+    color: #171A20;
+    padding: 12px;
+    font-weight: 100;
+    font-size: 16px;
+}
+
+.top_nav a:hover {
+    background-color: #F2F2F2;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.account {
+    display: flex;
+    gap: 6px;
+    padding-right: 20px;
+}
+
+.account a {
+    padding: 6px;
+    color: #171A20;;
+}
+
+.account a:hover {
+    cursor: pointer;
+    padding: 6px;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+}
+
+nav.top_nav {
+    display: flex;
+    gap: 8px;
+}
+
+
+
+/* Home Hero Section */
+
+.home_hero {
+    position: relative;
+}
+
+.btn_left {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+}
+
+.btn_right {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+}
+
+.hero_items .text {
+    position: absolute;
+    top: 8%;
+    width: 100%;
+    text-align: center;
+    line-height: 1.3;
+    color: #ffff;
+}
+.hero_items button {
+    background-color: #D4D0CA;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hero_btn {
+    margin-top: 15px;
+}
+
+.hero_btn button {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.text h1 {
+    font-size: 50px;
+}
+
+.text p {
+    font-size: 20px;
+}
+
+.hero_img img {
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* About Tesla Section */
+
+.about_tesla {
+    display: flex;
+    margin: 50px;    
+    background-color: #F4F4F4;
+    border-radius: 10px;
+}
+.about_tesla p {
+    color: rgb(90, 86, 86);
+    font-weight: 500;
+    font-size: 18px;
+}
+.about_right {
+    flex: 2;
+}
+
+.about_right video{
+    width: 100%;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.about_left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 30px;
+    gap: 25px;
+}
+
+.hero_h1 {
+    font-size: 40px;
+    line-height: 1.2em;
+}
+
+.miles {
+    display: flex;
+    gap: 15px;
+}
+
+.about_left p {
+    font-size: 16px;
+}
+
+.animated-gradient-text {
+  font-family: sans-serif;
+  font-weight: bold;
+  
+  background: linear-gradient(to right, rgb(23, 26, 32), rgb(62, 106, 225), rgb(23, 26, 32)) text;
+  background-size: 200% auto;
+  
+  background-clip: text;
+  
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-black {
+    border: none;
+    background-color: #171A20;
+    color: #ffff;
+    font-weight: 700;
+    width: 45%;
+    padding: 12px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-white {
+    border: none;
+    background-color: #FFFFFF;
+    color: #171A20;
+    font-weight: 700;
+    width: 45%;
+    padding: 12px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-blue {
+    border: none;
+    background-color: #0071e0;
+    color: #ffff;
+    font-weight: 700;
+    min-width: 45%;
+    padding: 12px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.about_btn {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.showcase {
+    display: grid;
+    grid-auto-flow: column;
+
+    grid-auto-columns: 70vw; 
+    overflow-x: auto;
+    gap: 24px;
+    padding: 0 50px 0 50px;
+}
+
+.showcase img {
+    width: 100%;
+    height: 85vh;
+    object-fit: cover;
+    display: block;
+}
+
+.showcase::-webkit-scrollbar {
+    display: none;
+}
+
+.showcase-item {
+    position: relative;
+}
+
+.showcase-item .showcase-text {
+    position: absolute;
+    bottom: 8%;
+    left: 4%;
+    width: 40%;
+    line-height: 1.7;
+    color: #ffff;
+    gap: 12px;
+}
+
+.showcase-text p {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+}
+
+.showcase-text h1 {
+    font-size: 40px;
+    line-height: 1.2em;
+}
+
+.offers {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px;
+    gap: 24px;
+}
+
+.current {
+    background-color: #F4F4F4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50px;
+}
+
+.current img {
+    width: 30%;
+}
+
+.inventory {
+    background-color: #F4F4F4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50px;
+}
+
+.inventory img {
+    width: 30%;
+}
+
+.btn-white-ex {
+    border: none;
+    background-color: #FFFFFF;
+    color: #171A20;
+    font-weight: 700;
+    width: 50%;
+    padding: 12px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555a5f;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;  
+    padding: 0;  
+}
+
+
+/* ============================================
+   RESPONSIVE MEDIA QUERIES
+   ============================================ */
+
+/* Large Tablets and Small Desktops (768px - 1024px) */
+@media (max-width: 1024px) {
+    header.main_header {
+        padding: 0 15px;
+    }
+
+    nav.top_nav {
+        gap: 5px;
+    }
+
+    .top_nav a {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .text h1 {
+        font-size: 36px;
+    }
+
+    .text p {
+        font-size: 16px;
+    }
+
+    .hero_img img {
+        height: 60vh;
+    }
+
+    .about_tesla {
+        margin: 30px;
+        flex-direction: column;
+    }
+
+    .about_left {
+        padding: 20px;
+        flex: none;
+    }
+
+    .about_right {
+        flex: none;
+    }
+
+    .hero_h1 {
+        font-size: 32px;
+    }
+
+    .btn-black, .btn-white {
+        width: 48%;
+    }
+
+    .showcase {
+        padding: 0 30px 0 30px;
+        grid-auto-columns: 85vw;
+    }
+
+    .showcase img {
+        height: 70vh;
+    }
+
+    .showcase-item .showcase-text {
+        width: 50%;
+        bottom: 10%;
+    }
+
+    .showcase-text h1 {
+        font-size: 32px;
+    }
+
+    .showcase-text p {
+        font-size: 16px;
+    }
+
+    .offers {
+        margin: 30px;
+        flex-direction: column;
+    }
+
+    .current, .inventory {
+        padding-left: 30px;
+        width: 100%;
+    }
+
+    .current img, .inventory img {
+        width: 25%;
+    }
+}
+
+/* Mobile Devices (481px - 768px) */
+@media (max-width: 768px) {
+    header.main_header {
+        flex-wrap: wrap;
+        padding: 10px 15px;
+        gap: 10px;
+    }
+
+    .logo img {
+        width: 100px;
+    }
+
+    nav.top_nav {
+        display: none; /* Hide nav on mobile - can add hamburger menu later */
+    }
+
+    .account {
+        padding-right: 10px;
+    }
+
+    .btn_left, .btn_right {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+    .btn_left {
+        left: 15px;
+    }
+
+    .btn_right {
+        right: 15px;
+    }
+
+    .hero_items .text {
+        top: 15%;
+    }
+
+    .text h1 {
+        font-size: 28px;
+    }
+
+    .text p {
+        font-size: 14px;
+    }
+
+    .hero_img img {
+        height: 50vh;
+    }
+
+    .hero_btn {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero_btn button {
+        padding: 10px 20px;
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .about_tesla {
+        margin: 20px;
+        border-radius: 8px;
+    }
+
+    .about_left {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .hero_h1 {
+        font-size: 26px;
+    }
+
+    .about_tesla p {
+        font-size: 15px;
+    }
+
+    .about_left p {
+        font-size: 14px;
+    }
+
+    .miles {
+        gap: 10px;
+    }
+
+    .miles h1 {
+        font-size: 24px;
+    }
+
+    .miles p {
+        font-size: 12px;
+    }
+
+    .btn-black, .btn-white {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .about_btn {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .showcase {
+        padding: 0 20px 0 20px;
+        grid-auto-columns: 90vw;
+        gap: 16px;
+    }
+
+    .showcase img {
+        height: 55vh;
+    }
+
+    .showcase-item .showcase-text {
+        width: 65%;
+        left: 6%;
+        bottom: 8%;
+    }
+
+    .showcase-text h1 {
+        font-size: 24px;
+    }
+
+    .showcase-text p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .btn-blue {
+        min-width: 100%;
+        padding: 10px;
+    }
+
+    .offers {
+        margin: 20px;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .current, .inventory {
+        padding-left: 20px;
+        width: 100%;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .current div, .inventory div {
+        margin-bottom: 15px;
+    }
+
+    .current img, .inventory img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .btn-white-ex {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .inventory .row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .inventory .row button {
+        width: 100%;
+    }
+}
+
+/* Small Mobile Devices (up to 480px) */
+@media (max-width: 480px) {
+    header.main_header {
+        padding: 8px 10px;
+        gap: 8px;
+    }
+
+    .logo img {
+        width: 80px;
+    }
+
+    .account a {
+        padding: 4px;
+    }
+
+    .btn_left, .btn_right {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .btn_left {
+        left: 10px;
+    }
+
+    .btn_right {
+        right: 10px;
+    }
+
+    .hero_items .text {
+        top: 18%;
+    }
+
+    .text h1 {
+        font-size: 24px;
+    }
+
+    .text p {
+        font-size: 12px;
+    }
+
+    .hero_img img {
+        height: 45vh;
+    }
+
+    .hero_btn button {
+        padding: 8px 16px;
+    }
+
+    .about_tesla {
+        margin: 15px;
+        border-radius: 6px;
+    }
+
+    .about_left {
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .hero_h1 {
+        font-size: 22px;
+    }
+
+    .about_tesla p {
+        font-size: 13px;
+    }
+
+    .about_left p {
+        font-size: 12px;
+    }
+
+    .miles {
+        gap: 8px;
+    }
+
+    .miles h1 {
+        font-size: 20px;
+    }
+
+    .miles p {
+        font-size: 11px;
+    }
+
+    .btn-black, .btn-white {
+        padding: 8px;
+    }
+
+    .showcase {
+        padding: 0 15px 0 15px;
+        grid-auto-columns: 95vw;
+        gap: 12px;
+    }
+
+    .showcase img {
+        height: 40vh;
+    }
+
+    .showcase-item .showcase-text {
+        width: 70%;
+        left: 8%;
+        bottom: 6%;
+    }
+
+    .showcase-text h1 {
+        font-size: 20px;
+    }
+
+    .showcase-text p {
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .offers {
+        margin: 15px;
+    }
+
+    .current, .inventory {
+        padding: 15px;
+    }
+
+    .current img, .inventory img {
+        height: 150px;
+    }
+
+    .btn-white-ex {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+
+/* Large Desktops (1440px and above) */
+@media (min-width: 1440px) {
+    header.main_header {
+        padding: 0 50px;
+    }
+
+    .about_tesla {
+        margin: 80px;
+    }
+
+    .offers {
+        margin: 80px;
+    }
+
+    .showcase {
+        padding: 0 80px 0 80px;
+    }
+}
