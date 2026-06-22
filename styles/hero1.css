@@ -164,7 +164,9 @@ color: #e2e8f0; /* Soft light text override strictly for the dark background ima
   height: 24px;
   transition: var(--transition-smooth);
 }
+/* h2 {
 
+} */
 .hero__arrow:hover {
   background-color: var(--color-arrow-hover);
 }
